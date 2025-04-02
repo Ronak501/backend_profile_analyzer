@@ -1,38 +1,41 @@
+import os
 from pymongo import MongoClient
 from pydantic import BaseModel
 from fastapi import FastAPI
-from typing import List
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+from fastapi import HTTPException
 
-# Initialize the FastAPI app
+# Load environment variables
+load_dotenv()
+
+# MongoDB Connection
+MONGO_URI = "mongodb+srv://Ronak:Ronak123@task.nabdt.mongodb.net/?retryWrites=true&w=majority&appName=Task"  # Example: "mongodb+srv://username:password@cluster.mongodb.net/"
+DB_NAME = "Task"
+
+client = MongoClient(MONGO_URI)
+db = client[DB_NAME]
+collection = db["link"]
+
+# Initialize FastAPI app
 app = FastAPI()
 
-# MongoDB URI (replace with your actual MongoDB URI)
-MONGO_URI = "mongodb+srv://Ronak:Ronak@51@analyzer.4lzmsnj.mongodb.net/?retryWrites=true&w=majority&appName=Analyzer"
-
-# Create a client and connect to the MongoDB cluster
-client = MongoClient(MONGO_URI)
-
-# Access the database and collection
-db = "Ronak"  # Replace with your database name
-collection = db.profiles  # Replace with your collection name
-
-# Allow CORS (so Next.js can call the API)
+# Allow CORS (configure properly for production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],  # Allow all origins
+    allow_origins=["http://localhost:3000"],  # Allow only frontend domains
     allow_credentials=True,
-    allow_methods=['*'],  # Allow all HTTP methods
-    allow_headers=['*'],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-@app.get('/')
+@app.get("/")
 def home():
-    return {'message': 'Hello from Python FastAPI Backend!'}
+    return {"message": "Hello from Python FastAPI Backend!"}
 
-@app.get('/api/data')
+@app.get("/api/data")
 def get_data():
-    return {'data': [1, 2, 3, 4, 5]}
+    return {"data": [1, 2, 3, 4, 5]}
 
 # Define Request Model
 class ProfileData(BaseModel):
@@ -42,4 +45,23 @@ class ProfileData(BaseModel):
 
 @app.post("/api/analyze")
 async def analyze_profiles(data: ProfileData):
-      return {"message": "Profiles received!", "data": data}
+    # Check if GitHub ID or LinkedIn link already exists
+    existing_profile = collection.find_one(
+        {"$or": [{"github": data.github}, {"linkedin": data.linkedin}]}
+    )
+
+    if existing_profile:
+        raise HTTPException(
+            status_code=400,
+            detail="Profile with this GitHub ID or LinkedIn link already exists."
+        )
+
+    # Insert new profile if no duplicate is found
+    result = collection.insert_one(data.dict())
+    print(f"Inserted ID: {result.inserted_id}")
+
+    return {
+        "message": "Profile saved successfully!",
+        "inserted_id": str(result.inserted_id),
+        "data": data
+    }
