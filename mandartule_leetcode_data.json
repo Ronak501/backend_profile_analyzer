@@ -1,0 +1,384 @@
+{
+  "profile": {
+    "data": {
+      "matchedUser": {
+        "username": "mandartule",
+        "profile": {
+          "realName": "Mandar Tule",
+          "aboutMe": "Upcoming SDE",
+          "countryName": "India",
+          "ranking": 61121,
+          "reputation": 17
+        }
+      }
+    }
+  },
+  "solved_stats": {
+    "data": {
+      "allQuestionsCount": [
+        {
+          "difficulty": "All",
+          "count": 3506
+        },
+        {
+          "difficulty": "Easy",
+          "count": 870
+        },
+        {
+          "difficulty": "Medium",
+          "count": 1819
+        },
+        {
+          "difficulty": "Hard",
+          "count": 817
+        }
+      ],
+      "matchedUser": {
+        "submitStatsGlobal": {
+          "acSubmissionNum": [
+            {
+              "difficulty": "All",
+              "count": 698
+            },
+            {
+              "difficulty": "Easy",
+              "count": 242
+            },
+            {
+              "difficulty": "Medium",
+              "count": 398
+            },
+            {
+              "difficulty": "Hard",
+              "count": 58
+            }
+          ]
+        }
+      }
+    }
+  },
+  "topics": {
+    "data": {
+      "matchedUser": {
+        "tagProblemCounts": {
+          "advanced": [
+            {
+              "tagName": "Data Stream",
+              "problemsSolved": 3
+            },
+            {
+              "tagName": "Game Theory",
+              "problemsSolved": 4
+            },
+            {
+              "tagName": "Rolling Hash",
+              "problemsSolved": 2
+            },
+            {
+              "tagName": "Backtracking",
+              "problemsSolved": 24
+            },
+            {
+              "tagName": "Bitmask",
+              "problemsSolved": 1
+            },
+            {
+              "tagName": "Quickselect",
+              "problemsSolved": 2
+            },
+            {
+              "tagName": "Dynamic Programming",
+              "problemsSolved": 74
+            },
+            {
+              "tagName": "Divide and Conquer",
+              "problemsSolved": 17
+            },
+            {
+              "tagName": "Trie",
+              "problemsSolved": 7
+            },
+            {
+              "tagName": "Union Find",
+              "problemsSolved": 24
+            },
+            {
+              "tagName": "Binary Indexed Tree",
+              "problemsSolved": 3
+            },
+            {
+              "tagName": "Segment Tree",
+              "problemsSolved": 4
+            },
+            {
+              "tagName": "Monotonic Stack",
+              "problemsSolved": 13
+            },
+            {
+              "tagName": "Monotonic Queue",
+              "problemsSolved": 4
+            },
+            {
+              "tagName": "Topological Sort",
+              "problemsSolved": 10
+            },
+            {
+              "tagName": "Shortest Path",
+              "problemsSolved": 10
+            }
+          ],
+          "intermediate": [
+            {
+              "tagName": "Tree",
+              "problemsSolved": 59
+            },
+            {
+              "tagName": "Binary Tree",
+              "problemsSolved": 56
+            },
+            {
+              "tagName": "Hash Table",
+              "problemsSolved": 154
+            },
+            {
+              "tagName": "Ordered Set",
+              "problemsSolved": 6
+            },
+            {
+              "tagName": "Graph",
+              "problemsSolved": 36
+            },
+            {
+              "tagName": "Greedy",
+              "problemsSolved": 78
+            },
+            {
+              "tagName": "Binary Search",
+              "problemsSolved": 57
+            },
+            {
+              "tagName": "Depth-First Search",
+              "problemsSolved": 78
+            },
+            {
+              "tagName": "Breadth-First Search",
+              "problemsSolved": 63
+            },
+            {
+              "tagName": "Recursion",
+              "problemsSolved": 19
+            },
+            {
+              "tagName": "Sliding Window",
+              "problemsSolved": 36
+            },
+            {
+              "tagName": "Bit Manipulation",
+              "problemsSolved": 47
+            },
+            {
+              "tagName": "Math",
+              "problemsSolved": 88
+            },
+            {
+              "tagName": "Design",
+              "problemsSolved": 13
+            },
+            {
+              "tagName": "Iterator",
+              "problemsSolved": 1
+            },
+            {
+              "tagName": "Brainteaser",
+              "problemsSolved": 4
+            }
+          ],
+          "fundamental": [
+            {
+              "tagName": "Array",
+              "problemsSolved": 407
+            },
+            {
+              "tagName": "Matrix",
+              "problemsSolved": 70
+            },
+            {
+              "tagName": "String",
+              "problemsSolved": 170
+            },
+            {
+              "tagName": "Simulation",
+              "problemsSolved": 57
+            },
+            {
+              "tagName": "Enumeration",
+              "problemsSolved": 12
+            },
+            {
+              "tagName": "Sorting",
+              "problemsSolved": 95
+            },
+            {
+              "tagName": "Stack",
+              "problemsSolved": 49
+            },
+            {
+              "tagName": "Queue",
+              "problemsSolved": 13
+            },
+            {
+              "tagName": "Linked List",
+              "problemsSolved": 34
+            },
+            {
+              "tagName": "Two Pointers",
+              "problemsSolved": 69
+            }
+          ]
+        }
+      }
+    }
+  },
+  "contest_history": {
+    "errors": [
+      {
+        "message": "Cannot query field \"score\" on type \"UserContestRankingHistoryNode\".",
+        "locations": [
+          {
+            "line": 16,
+            "column": 9
+          }
+        ]
+      }
+    ]
+  },
+  "badges": {
+    "data": {
+      "matchedUser": {
+        "badges": [
+          {
+            "id": "5633143",
+            "name": "Submission Badge",
+            "shortName": "500 Days Badge",
+            "displayName": "500 Days Badge",
+            "creationDate": "2024-12-02"
+          },
+          {
+            "id": "5633142",
+            "name": "Submission Badge",
+            "shortName": "365 Days Badge",
+            "displayName": "365 Days Badge",
+            "creationDate": "2024-12-02"
+          },
+          {
+            "id": "6200539",
+            "name": "Annual Badge",
+            "shortName": "50 Days Badge 2025",
+            "displayName": "50 Days Badge 2025",
+            "creationDate": "2025-02-20"
+          },
+          {
+            "id": "5469135",
+            "name": "Annual Badge",
+            "shortName": "Annual Badge 2024",
+            "displayName": "Annual Badge 2024",
+            "creationDate": "2024-11-20"
+          },
+          {
+            "id": "4618560",
+            "name": "Annual Badge",
+            "shortName": "200 Days Badge 2024",
+            "displayName": "200 Days Badge 2024",
+            "creationDate": "2024-08-01"
+          },
+          {
+            "id": "3723622",
+            "name": "Annual Badge",
+            "shortName": "100 Days Badge 2024",
+            "displayName": "100 Days Badge 2024",
+            "creationDate": "2024-04-13"
+          },
+          {
+            "id": "3385898",
+            "name": "Annual Badge",
+            "shortName": "50 Days Badge 2024",
+            "displayName": "50 Days Badge 2024",
+            "creationDate": "2024-02-21"
+          },
+          {
+            "id": "2866188",
+            "name": "Annual Badge",
+            "shortName": "50 Days Badge 2023",
+            "displayName": "50 Days Badge 2023",
+            "creationDate": "2023-12-16"
+          },
+          {
+            "id": "2866187",
+            "name": "Annual Badge",
+            "shortName": "100 Days Badge 2023",
+            "displayName": "100 Days Badge 2023",
+            "creationDate": "2023-12-16"
+          },
+          {
+            "id": "6693094",
+            "name": "Daily Coding Challenge",
+            "shortName": "Mar Badge",
+            "displayName": "Mar LeetCoding Challenge",
+            "creationDate": "2025-03-31"
+          },
+          {
+            "id": "6329025",
+            "name": "Daily Coding Challenge",
+            "shortName": "Feb Badge",
+            "displayName": "Feb LeetCoding Challenge",
+            "creationDate": "2025-02-28"
+          },
+          {
+            "id": "6076965",
+            "name": "Daily Coding Challenge",
+            "shortName": "Jan Badge",
+            "displayName": "Jan LeetCoding Challenge",
+            "creationDate": "2025-01-31"
+          },
+          {
+            "id": "4839008",
+            "name": "Daily Coding Challenge",
+            "shortName": "Aug Badge",
+            "displayName": "Aug LeetCoding Challenge",
+            "creationDate": "2024-08-31"
+          },
+          {
+            "id": "4612287",
+            "name": "Daily Coding Challenge",
+            "shortName": "Jul Badge",
+            "displayName": "Jul LeetCoding Challenge",
+            "creationDate": "2024-07-31"
+          },
+          {
+            "id": "4207052",
+            "name": "Daily Coding Challenge",
+            "shortName": "Jun Badge",
+            "displayName": "Jun LeetCoding Challenge",
+            "creationDate": "2024-06-30"
+          }
+        ]
+      }
+    }
+  },
+  "language_stats": {
+    "data": {
+      "matchedUser": {
+        "languageProblemCount": [
+          {
+            "languageName": "C++",
+            "problemsSolved": 10
+          },
+          {
+            "languageName": "Java",
+            "problemsSolved": 698
+          }
+        ]
+      }
+    }
+  }
+}

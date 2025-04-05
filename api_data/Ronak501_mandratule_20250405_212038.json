@@ -1,0 +1,336 @@
+{
+  "github_analysis": {
+    "name": "Talaviya Ronak",
+    "bio": "\ud83c\udf10 UI/UX Designer & Web Developer | \ud83c\udfb6 Music Enthusiast | \ud83d\ude80 Tech Innovator",
+    "followers": 4,
+    "following": 2,
+    "public_repos": 21,
+    "profile_url": "https://github.com/Ronak501",
+    "company": null,
+    "location": null,
+    "blog": "",
+    "created_at": "2024-04-27T13:05:21Z",
+    "updated_at": "2025-03-24T06:42:05Z",
+    "most_used_languages": [
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "C",
+      "CSS"
+    ],
+    "total_contributions": 14,
+    "repositories": [
+      {
+        "name": "Amazon-Clone",
+        "description": "This is my first front-end project.",
+        "stars": 1,
+        "forks": 0,
+        "language": "HTML",
+        "repo_url": "https://github.com/Ronak501/Amazon-Clone"
+      },
+      {
+        "name": "API",
+        "description": "this repo is use in frontend project",
+        "stars": 1,
+        "forks": 0,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/API"
+      },
+      {
+        "name": "Calender",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "TypeScript",
+        "repo_url": "https://github.com/Ronak501/Calender"
+      },
+      {
+        "name": "chatbot-back",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/chatbot-back"
+      },
+      {
+        "name": "chatbot-front",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/chatbot-front"
+      },
+      {
+        "name": "datatable-primereact",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "TypeScript",
+        "repo_url": "https://github.com/Ronak501/datatable-primereact"
+      },
+      {
+        "name": "DBMS_OEP",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "TypeScript",
+        "repo_url": "https://github.com/Ronak501/DBMS_OEP"
+      },
+      {
+        "name": "DSA",
+        "description": "this repo is for learn DSA in c.",
+        "stars": 1,
+        "forks": 0,
+        "language": "C",
+        "repo_url": "https://github.com/Ronak501/DSA"
+      },
+      {
+        "name": "Instagram-clone",
+        "description": "practice for frontend development",
+        "stars": 1,
+        "forks": 0,
+        "language": "CSS",
+        "repo_url": "https://github.com/Ronak501/Instagram-clone"
+      },
+      {
+        "name": "JS",
+        "description": "This repository is learning javascript from chai aur code channel",
+        "stars": 1,
+        "forks": 0,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/JS"
+      },
+      {
+        "name": "langflow_astradb",
+        "description": "This repository is for hackthon project",
+        "stars": 1,
+        "forks": 1,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/langflow_astradb"
+      },
+      {
+        "name": "live-comments",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "TypeScript",
+        "repo_url": "https://github.com/Ronak501/live-comments"
+      },
+      {
+        "name": "MCP_Server",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "Python",
+        "repo_url": "https://github.com/Ronak501/MCP_Server"
+      },
+      {
+        "name": "Mystery-Message",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "TypeScript",
+        "repo_url": "https://github.com/Ronak501/Mystery-Message"
+      },
+      {
+        "name": "NextJS-Auth",
+        "description": "This repository is for learning next js in authitication and routing",
+        "stars": 1,
+        "forks": 0,
+        "language": "TypeScript",
+        "repo_url": "https://github.com/Ronak501/NextJS-Auth"
+      },
+      {
+        "name": "Next_Form",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "TypeScript",
+        "repo_url": "https://github.com/Ronak501/Next_Form"
+      },
+      {
+        "name": "Orrery-Web",
+        "description": "This repository is create and display our hackthon code and idea",
+        "stars": 1,
+        "forks": 1,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/Orrery-Web"
+      },
+      {
+        "name": "React-JS",
+        "description": "learning React JS with chai aur code",
+        "stars": 1,
+        "forks": 0,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/React-JS"
+      },
+      {
+        "name": "Ronak-Backend",
+        "description": "A practice program for backend.",
+        "stars": 1,
+        "forks": 0,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/Ronak-Backend"
+      },
+      {
+        "name": "Spotify-Clone",
+        "description": null,
+        "stars": 1,
+        "forks": 0,
+        "language": "HTML",
+        "repo_url": "https://github.com/Ronak501/Spotify-Clone"
+      },
+      {
+        "name": "Xsplit",
+        "description": null,
+        "stars": 0,
+        "forks": 0,
+        "language": "JavaScript",
+        "repo_url": "https://github.com/Ronak501/Xsplit"
+      }
+    ]
+  },
+  "leetcode_analysis": {
+    "profile": {
+      "errors": [
+        {
+          "message": "That user does not exist.",
+          "locations": [
+            {
+              "line": 3,
+              "column": 7
+            }
+          ],
+          "path": [
+            "matchedUser"
+          ],
+          "extensions": {
+            "handled": true
+          }
+        }
+      ],
+      "data": {
+        "matchedUser": null
+      }
+    },
+    "solved_stats": {
+      "errors": [
+        {
+          "message": "That user does not exist.",
+          "locations": [
+            {
+              "line": 4,
+              "column": 7
+            }
+          ],
+          "path": [
+            "matchedUser"
+          ],
+          "extensions": {
+            "handled": true
+          }
+        }
+      ],
+      "data": {
+        "allQuestionsCount": [
+          {
+            "difficulty": "All",
+            "count": 3506
+          },
+          {
+            "difficulty": "Easy",
+            "count": 870
+          },
+          {
+            "difficulty": "Medium",
+            "count": 1819
+          },
+          {
+            "difficulty": "Hard",
+            "count": 817
+          }
+        ],
+        "matchedUser": null
+      }
+    },
+    "topics": {
+      "errors": [
+        {
+          "message": "That user does not exist.",
+          "locations": [
+            {
+              "line": 3,
+              "column": 7
+            }
+          ],
+          "path": [
+            "matchedUser"
+          ],
+          "extensions": {
+            "handled": true
+          }
+        }
+      ],
+      "data": {
+        "matchedUser": null
+      }
+    },
+    "contest_history": {
+      "errors": [
+        {
+          "message": "Cannot query field \"score\" on type \"UserContestRankingHistoryNode\".",
+          "locations": [
+            {
+              "line": 16,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    "badges": {
+      "errors": [
+        {
+          "message": "That user does not exist.",
+          "locations": [
+            {
+              "line": 3,
+              "column": 7
+            }
+          ],
+          "path": [
+            "matchedUser"
+          ],
+          "extensions": {
+            "handled": true
+          }
+        }
+      ],
+      "data": {
+        "matchedUser": null
+      }
+    },
+    "language_stats": {
+      "errors": [
+        {
+          "message": "That user does not exist.",
+          "locations": [
+            {
+              "line": 3,
+              "column": 7
+            }
+          ],
+          "path": [
+            "matchedUser"
+          ],
+          "extensions": {
+            "handled": true
+          }
+        }
+      ],
+      "data": {
+        "matchedUser": null
+      }
+    }
+  }
+}

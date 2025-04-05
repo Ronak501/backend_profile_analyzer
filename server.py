@@ -2,10 +2,11 @@ from flask import Flask, request, jsonify
 import requests
 import json
 import os
-from datetime import datetime
 from collections import Counter
 from flask_cors import CORS
-from routes.LeetCode_data_fetcher import get_user_profile, get_solved_stats, get_topic_wise_stats, get_contest_history, get_badges, get_language_stats
+from bs4 import BeautifulSoup
+from collections import defaultdict
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 CORS(app)
@@ -77,6 +78,120 @@ def fetch_github_data(username):
 
     except Exception as e:
         return {"error": f"Error fetching GitHub data: {str(e)}"}
+    
+HEADERS = {
+    "Content-Type": "application/json",
+    "User-Agent": "Mozilla/5.0",
+    "Referer": "https://leetcode.com"
+}
+
+GRAPHQL_URL = "https://leetcode.com/graphql"
+
+def graphql_query(query, variables):
+    try:
+        response = requests.post(GRAPHQL_URL, json={"query": query, "variables": variables}, headers=HEADERS)
+        return response.json()
+    except Exception as e:
+        print(f"GraphQL Error: {e}")
+        return {}
+
+def get_user_profile(username):
+    query = """
+    query getUserProfile($username: String!) {
+      matchedUser(username: $username) {
+        username
+        profile {
+          realName
+          aboutMe
+          countryName
+          ranking
+          reputation
+        }
+      }
+    }
+    """
+    return graphql_query(query, {"username": username})
+
+def get_solved_stats(username):
+    query = """
+    query userProblemsSolved($username: String!) {
+      allQuestionsCount { difficulty count }
+      matchedUser(username: $username) {
+        submitStatsGlobal {
+          acSubmissionNum { difficulty count }
+        }
+      }
+    }
+    """
+    return graphql_query(query, {"username": username})
+
+def get_topic_wise_stats(username):
+    query = """
+    query userProblemsSolved($username: String!) {
+      matchedUser(username: $username) {
+        tagProblemCounts {
+          advanced { tagName problemsSolved }
+          intermediate { tagName problemsSolved }
+          fundamental { tagName problemsSolved }
+        }
+      }
+    }
+    """
+    return graphql_query(query, {"username": username})
+
+def get_contest_history(username):
+    query = """
+    query userContestRankingInfo($username: String!) {
+      userContestRanking(username: $username) {
+        attendedContestsCount
+        rating
+        globalRanking
+        totalParticipants
+        topPercentage
+      }
+      userContestRankingHistory(username: $username) {
+        contest {
+          title
+          startTime
+        }
+        ranking
+        score
+        attended
+        problemsSolved
+        totalProblems
+      }
+    }
+    """
+    return graphql_query(query, {"username": username})
+
+def get_badges(username):
+    query = """
+    query userBadges($username: String!) {
+      matchedUser(username: $username) {
+        badges {
+          id
+          name
+          shortName
+          displayName
+          creationDate
+        }
+      }
+    }
+    """
+    return graphql_query(query, {"username": username})
+
+def get_language_stats(username):
+    query = """
+    query languageStats($username: String!) {
+      matchedUser(username: $username) {
+        languageProblemCount {
+          languageName
+          problemsSolved
+        }
+      }
+    }
+    """
+    return graphql_query(query, {"username": username})
 
 
 def fetch_leetcode_data(username):
