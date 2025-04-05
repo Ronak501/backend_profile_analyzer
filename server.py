@@ -1,67 +1,134 @@
+from flask import Flask, request, jsonify
+import requests
+import json
 import os
-from pymongo import MongoClient
-from pydantic import BaseModel
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
-from fastapi import HTTPException
+from datetime import datetime
+from collections import Counter
+from flask_cors import CORS
+from routes.LeetCode_data_fetcher import get_user_profile, get_solved_stats, get_topic_wise_stats, get_contest_history, get_badges, get_language_stats
 
-# Load environment variables
-load_dotenv()
+app = Flask(__name__)
+CORS(app)
 
-# MongoDB Connection
-MONGO_URI = "mongodb+srv://Ronak:Ronak123@task.nabdt.mongodb.net/?retryWrites=true&w=majority&appName=Task"  # Example: "mongodb+srv://username:password@cluster.mongodb.net/"
-DB_NAME = "Task"
+import requests
+from collections import Counter
 
-client = MongoClient(MONGO_URI)
-db = client[DB_NAME]
-collection = db["link"]
+def fetch_github_data(username):
+    user_api = f"https://api.github.com/users/{username}"
+    repos_api = f"https://api.github.com/users/{username}/repos?per_page=100"
+    contrib_api = f"https://api.github.com/users/{username}/events/public"
 
-# Initialize FastAPI app
-app = FastAPI()
+    try:
+        # Fetch User Profile Data
+        user_response = requests.get(user_api)
+        if user_response.status_code != 200:
+            return {"error": f"GitHub profile not found (Status code: {user_response.status_code})"}
 
-# Allow CORS (configure properly for production)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Allow only frontend domains
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+        user_data = user_response.json()
 
-@app.get("/")
-def home():
-    return {"message": "Hello from Python FastAPI Backend!"}
+        # Fetch Repositories Data
+        repos_response = requests.get(repos_api)
+        if repos_response.status_code != 200:
+            return {"error": f"Failed to fetch repositories (Status code: {repos_response.status_code})"}
 
-@app.get("/api/data")
+        all_repos = repos_response.json()
+        repos_data = []
+        languages = []
+
+        for repo in all_repos:
+            languages.append(repo.get("language"))
+            repos_data.append({
+                "name": repo.get("name"),
+                "description": repo.get("description"),
+                "stars": repo.get("stargazers_count"),
+                "forks": repo.get("forks_count"),
+                "language": repo.get("language"),
+                "repo_url": repo.get("html_url")
+            })
+
+        # Find Top 5 Most Used Languages
+        language_count = Counter(languages)
+        top_5_languages = [lang for lang, _ in language_count.most_common(5)]
+
+        # Fetch Contributions (Recent Public Events)
+        contrib_response = requests.get(contrib_api)
+        total_contributions = 0
+        if contrib_response.status_code == 200:
+            events = contrib_response.json()
+            total_contributions = len(events)
+
+        # Final Response
+        return {
+            "name": user_data.get("name", ""),
+            "bio": user_data.get("bio", ""),
+            "followers": user_data.get("followers", 0),
+            "following": user_data.get("following", 0),
+            "public_repos": user_data.get("public_repos", 0),
+            "profile_url": user_data.get("html_url", ""),
+            "company": user_data.get("company", ""),
+            "location": user_data.get("location", ""),
+            "blog": user_data.get("blog", ""),
+            "created_at": user_data.get("created_at", ""),
+            "updated_at": user_data.get("updated_at", ""),
+            "most_used_languages": top_5_languages,
+            "total_contributions": total_contributions,
+            "repositories": repos_data
+        }
+
+    except Exception as e:
+        return {"error": f"Error fetching GitHub data: {str(e)}"}
+
+
+def fetch_leetcode_data(username):
+    leetcode_api = f"https://leetcode-stats-api.herokuapp.com/{username}"
+    try:
+        profile = get_user_profile(username)
+        solved_stats = get_solved_stats(username)
+        topics = get_topic_wise_stats(username)
+        contests = get_contest_history(username)
+        badges = get_badges(username)
+        languages = get_language_stats(username)
+
+        return {
+            "profile": profile,
+            "solved_stats": solved_stats,
+            "topics": topics,
+            "contest_history": contests,
+            "badges": badges,
+            "language_stats": languages
+        }
+
+    except Exception as e:
+        return {"error": f"Error fetching LeetCode data: {str(e)}"}
+    
+def save_data_to_json(data, github_username, leetcode_username):
+    if not os.path.exists('api_data'):
+        os.makedirs('api_data')
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"api_data/{github_username}_{leetcode_username}_{timestamp}.json"
+    with open(filename, 'w') as file:
+        json.dump(data, file, indent=2)
+    return filename
+
+@app.route('/api', methods=['GET'])
 def get_data():
-    return {"data": [1, 2, 3, 4, 5]}
+    github_username = request.args.get('github_username')
+    leetcode_username = request.args.get('leetcode_username')
 
-# Define Request Model
-class ProfileData(BaseModel):
-    github: str
-    linkedin: str
-    leetcode: str
+    if not github_username or not leetcode_username:
+        return jsonify({"error": "Both github_username and leetcode_username are required"}), 400
 
-@app.post("/api/analyze")
-async def analyze_profiles(data: ProfileData):
-    # Check if GitHub ID or LinkedIn link already exists
-    existing_profile = collection.find_one(
-        {"$or": [{"github": data.github}, {"linkedin": data.linkedin}]}
-    )
+    github_data = fetch_github_data(github_username)
+    leetcode_data = fetch_leetcode_data(leetcode_username)
 
-    if existing_profile:
-        raise HTTPException(
-            status_code=400,
-            detail="Profile with this GitHub ID or LinkedIn link already exists."
-        )
-
-    # Insert new profile if no duplicate is found
-    result = collection.insert_one(data.dict())
-    print(f"Inserted ID: {result.inserted_id}")
-
-    return {
-        "message": "Profile saved successfully!",
-        "inserted_id": str(result.inserted_id),
-        "data": data
+    analysis = {
+        "github_analysis": github_data,
+        "leetcode_analysis": leetcode_data
     }
+
+    save_data_to_json(analysis, github_username, leetcode_username)
+
+    return jsonify(analysis)
+
+if __name__ == '__main__':
+    app.run(debug=True)
