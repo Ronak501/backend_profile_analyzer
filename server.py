@@ -7,7 +7,6 @@ from flask_cors import CORS
 from bs4 import BeautifulSoup
 from collections import defaultdict
 from datetime import datetime, timedelta
-
 app = Flask(__name__)
 CORS(app)
 
@@ -216,15 +215,6 @@ def fetch_leetcode_data(username):
     except Exception as e:
         return {"error": f"Error fetching LeetCode data: {str(e)}"}
     
-def save_data_to_json(data, github_username, leetcode_username):
-    if not os.path.exists('api_data'):
-        os.makedirs('api_data')
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"api_data/{github_username}_{leetcode_username}_{timestamp}.json"
-    with open(filename, 'w') as file:
-        json.dump(data, file, indent=2)
-    return filename
-
 @app.route('/api', methods=['GET'])
 def get_data():
     github_username = request.args.get('github_username')
@@ -240,8 +230,6 @@ def get_data():
         "github_analysis": github_data,
         "leetcode_analysis": leetcode_data
     }
-
-    save_data_to_json(analysis, github_username, leetcode_username)
 
     return jsonify(analysis)
 
