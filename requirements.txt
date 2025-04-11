@@ -23,7 +23,6 @@ cmdstanpy
 colorama
 colorlover
 comm
-comtypes
 contourpy
 cufflinks
 cycler
@@ -126,14 +125,11 @@ pydantic_core
 Pygments
 pyparsing
 PyPDF2
-pypiwin32
 pytesseract
 python-dateutil
 python-json-logger
 pyttsx3
 pytz
-pywin32
-pywinpty
 PyYAML
 pyzmq
 qrcode
