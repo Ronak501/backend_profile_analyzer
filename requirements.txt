@@ -118,7 +118,6 @@ psutil
 pure_eval
 pyasn1
 pyasn1_modules
-PyAudio
 pycparser
 pydantic
 pydantic_core
