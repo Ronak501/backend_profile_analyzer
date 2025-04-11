@@ -287,10 +287,10 @@ from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
-# Enhanced CORS configuration
+# Enhanced CORS configuration for both development and production
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:3000"],
+        "origins": ["http://localhost:3000", "https://*.onrender.com", "https://*.vercel.app"],
         "methods": ["GET", "POST", "OPTIONS", "PUT", "DELETE"],
         "allow_headers": ["*"],
         "supports_credentials": True,
@@ -301,8 +301,16 @@ CORS(app, resources={
 
 @app.after_request
 def after_request(response):
-    # Additional headers for all responses
-    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    # Get the origin from the request
+    origin = request.headers.get('Origin')
+    
+    # If origin is in our allowed list, set it as the allowed origin
+    if origin and origin in ["http://localhost:3000", "https://*.onrender.com", "https://*.vercel.app"]:
+        response.headers.add('Access-Control-Allow-Origin', origin)
+    else:
+        # In production, allow any origin
+        response.headers.add('Access-Control-Allow-Origin', '*')
+    
     response.headers.add('Access-Control-Allow-Credentials', 'true')
     response.headers.add('Access-Control-Allow-Headers', '*')
     response.headers.add('Access-Control-Allow-Methods', '*')
@@ -522,7 +530,7 @@ def fetch_leetcode_data(username):
 def fetch_linkedin_data(username):
     api_endpoint = 'https://nubela.co/proxycurl/api/v2/linkedin'
     linkedin_profile_url = f'https://www.linkedin.com/in/{username}/'
-    api_key = 'txiorZ9djGmXBrf3pb-DFQ'  # Using the provided API key
+    api_key = os.environ.get('PROXYCURL_API_KEY', 'txiorZ9djGmXBrf3pb-DFQ')  # Use environment variable with fallback
     headers = {'Authorization': 'Bearer ' + api_key}
 
     try:
@@ -602,5 +610,10 @@ def get_data():
 
     return jsonify(analysis)
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "healthy", "timestamp": datetime.now().isoformat()}), 200
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
