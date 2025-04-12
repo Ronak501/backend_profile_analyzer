@@ -253,7 +253,7 @@ def fetch_leetcode_data(username):
 def fetch_linkedin_data(username):
     api_endpoint = 'https://nubela.co/proxycurl/api/v2/linkedin'
     linkedin_profile_url = f'https://www.linkedin.com/in/{username}/'
-    api_key = os.environ.get('PROXYCURL_API_KEY', 'txiorZ9djGmXBrf3pb-DFQ')  # Use environment variable with fallback
+    api_key = "zZe8tR05rWiFuLY9NRDgzA"  # Use environment variable with fallback
     headers = {'Authorization': 'Bearer ' + api_key}
 
     try:
