@@ -13,7 +13,7 @@ app = Flask(__name__)
 # Enhanced CORS configuration
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:3000"],
+        "origins": [os.environ.get("FRONTEND_URL")],
         "methods": ["GET", "POST", "OPTIONS", "PUT", "DELETE"],
         "allow_headers": ["*"],
         "supports_credentials": True,
@@ -249,7 +249,7 @@ def fetch_leetcode_data(username):
 def get_data():
     if request.method == 'OPTIONS':
         response = jsonify({'message': 'Preflight CORS check'})
-        response.headers.add("Access-Control-Allow-Origin", "http://localhost:3000")
+        response.headers.add("Access-Control-Allow-Origin", os.environ.get("FRONTEND_URL"))
         response.headers.add("Access-Control-Allow-Headers", "*")
         response.headers.add("Access-Control-Allow-Methods", "*")
         return response
