@@ -1,12 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import flask, request, jsonify
 import requests
-import json
 import os
 from collections import Counter
 from flask_cors import CORS
-from bs4 import BeautifulSoup
-from collections import defaultdict
-from datetime import datetime, timedelta
+from flask import Flask, jsonify, make_response
 
 app = Flask(__name__)
 
@@ -269,6 +266,17 @@ def get_data():
     }
 
     return jsonify(analysis)
+
+@app.route('/', methods=['GET', 'OPTIONS'])
+def index():
+    if flask.request.method == 'OPTIONS':
+        # Preflight request
+        response = make_response()
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "*")
+        response.headers.add("Access-Control-Allow-Methods", "GET,OPTIONS")
+        return response
+    return jsonify({"message": "Welcome to the root route!"})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
