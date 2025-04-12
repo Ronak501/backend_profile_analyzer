@@ -267,15 +267,8 @@ def get_data():
 
     return jsonify(analysis)
 
-@app.route('/', methods=['GET', 'OPTIONS'])
+@app.route('/', methods=['GET'])
 def index():
-    if Flask.request.method == 'OPTIONS':
-        # Preflight request
-        response = make_response()
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        response.headers.add("Access-Control-Allow-Headers", "*")
-        response.headers.add("Access-Control-Allow-Methods", "GET,OPTIONS")
-        return response
     return jsonify({"message": "Welcome to the root route!"})
 
 if __name__ == '__main__':
