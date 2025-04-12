@@ -1,4 +1,4 @@
-from flask import flask, request, jsonify
+from flask import Flask, request, jsonify
 import requests
 import os
 from collections import Counter
@@ -269,7 +269,7 @@ def get_data():
 
 @app.route('/', methods=['GET', 'OPTIONS'])
 def index():
-    if flask.request.method == 'OPTIONS':
+    if Flask.request.method == 'OPTIONS':
         # Preflight request
         response = make_response()
         response.headers.add("Access-Control-Allow-Origin", "*")
